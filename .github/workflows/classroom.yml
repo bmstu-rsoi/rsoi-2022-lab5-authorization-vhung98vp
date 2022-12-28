@@ -21,10 +21,10 @@ jobs:
       - name: Build images
         run: docker-compose build
 
-      - name: Push images
-        run: |
-          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker-compose push
+      # - name: Push images
+      #   run: |
+      #     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      #     docker-compose push
 
       - name: Create K8S config
         run: |
