@@ -1,35 +1,35 @@
 {
   "id": "acc90f86-88ad-444e-924e-6f48f6ee7711",
-  "name": "[rsoi][lab5] Flight Service",
+  "name": "[rsoi][lab5] Library System",
   "values": [
     {
       "key": "serviceUrl",
-      "value": "",
+      "value": "206.189.242.80",
       "enabled": true
     },
     {
       "key": "identityProviderUrl",
-      "value": "",
+      "value": "https://dev-kcel8p8ubov758p0.us.auth0.com",
       "enabled": true
     },
     {
       "key": "username",
-      "value": "",
+      "value": "test@mail.ru",
       "enabled": true
     },
     {
       "key": "password",
-      "value": "",
+      "value": "Test12345",
       "enabled": true
     },
     {
       "key": "clientId",
-      "value": "",
+      "value": "8K0OawTKcIFflBd6PhZG7TX88bXGXgpM",
       "enabled": true
     },
     {
       "key": "clientSecret",
-      "value": "",
+      "value": "oAtTMpqaDnYpZSvmoiBLyjYP1hrvaI7fgPvlIKjHhF1J20boHfILHQlWFL-3p7Cd",
       "enabled": true
     }
   ],

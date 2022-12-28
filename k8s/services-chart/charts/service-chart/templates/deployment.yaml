@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app.kubernetes.io/name: {{ .Chart.Name }}
+    app.kubernetes.io/version: "{{ .Values.service.image.version }}"
+    app.kubernetes.io/component: application
+    app.kubernetes.io/part-of: micro-services
+    app.kubernetes.io/managed-by: helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+        app.kubernetes.io/name: {{ .Chart.Name }}
+        app.kubernetes.io/version: "{{ .Values.service.image.version }}"
+        app.kubernetes.io/component: application
+        app.kubernetes.io/part-of: micro-services
+        app.kubernetes.io/managed-by: helm
+    spec:
+        containers:
+          - name: {{ .Chart.Name}}
+            imagePullPolicy: Always
+            image: {{ .Values.service.image.name }}:{{ .Values.service.image.version }}            
+            env:
+              {{ if .Values.service.isGateway }}
+              - name: RATING_URL
+                value: http://rating-service:8050
+              - name: LIBRARY_URL
+                value: http://library-service:8060
+              - name: RESERVATION_URL
+                value: http://reservation-service:8070
+              {{ else }}
+              - name: GATEWAY_URL
+                value: http://gateway-service:8080
+              {{- end}}
+              {{ if .Values.service.database.url }}
+              - name: DATABASE_URL
+                value: "{{ .Values.service.database.url }}"
+              {{- end }}              
+            ports:
+              - name: web
+                containerPort: {{ .Values.service.port }}

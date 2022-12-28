@@ -1,0 +1,31 @@
+rating:
+  service:
+    port: 8050
+    image:
+      name: vhung98vp/rating
+      version: "1.1"
+    database:
+      url: "postgres://postgres:postgres@postgres-service:5432/ratings"
+library:
+  service:
+    port: 8060
+    image:
+      name: vhung98vp/library
+      version: "1.1"
+    database: 
+      url: "postgres://postgres:postgres@postgres-service:5432/libraries"
+reservation:
+  service:
+    port: 8070
+    image:
+      name: vhung98vp/reservation
+      version: "1.1"
+    database: 
+      url: "postgres://postgres:postgres@postgres-service:5432/reservations"
+gateway:
+  service:
+    port: 8080
+    image:
+      name: vhung98vp/gateway
+      version: "1.1"
+    isGateway: true
